@@ -50,6 +50,9 @@ void td_lp (tap_dance_state_t *state, void *user_data) {
     SEND_STRING("{");
   } else if (state->count == 3) {
     SEND_STRING("[");
+  }else if (state->count == 4) {
+    SEND_STRING("![[]]");
+    SEND_STRING(SS_TAP(X_LEFT) SS_TAP(X_LEFT));
   }
 }
 void td_rp (tap_dance_state_t *state, void *user_data) {
@@ -99,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: Colemak
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |   ESC  |   Q  |   W  |   F  |   P  |   G  |                              |   J  |   L  |   U  |   Y  | ;  : |  BSPC  |
+ * |   ESC  |   Q  |   W  |   F  |   P  |   G  |                              |   J  |   L  |   U  |   Y  | ;  : |  Del   |
  * |--------+------+-----+------+------+------|                              |------+------+------+------+------+--------|
  * |  MTAB  |   A  |   R  |  S   |   T  |   D  |                              |   H  |   N  |   E  |   I  |   O  |  ' "   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -110,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK] = LAYOUT(
-         KC_ESC,         UK_Q,          UK_W,          UK_F,          UK_P,      UK_G,                                              UK_J,         UK_L,         UK_U,         UK_Y,      UK_SCLN,     XXXXXXX,
+         KC_ESC,         UK_Q,          UK_W,          UK_F,          UK_P,      UK_G,                                              UK_J,         UK_L,         UK_U,         UK_Y,      UK_SCLN,     KC_DELETE,
        MEDIATAB, LGUI_T(UK_A),  LALT_T(UK_R),  LCTL_T(UK_S),  LSFT_T(UK_T),      UK_D,                                              UK_H, RSFT_T(UK_N), RCTL_T(UK_E), LALT_T(UK_I), LGUI_T(UK_O),     KC_QUOT,
         KC_LSFT,         UK_Z,          UK_X,          UK_C,          UK_V,      UK_B, XXXXXXX,  C(UK_E), KC_LALT,  XXXXXXX,        UK_K,         UK_M,      UK_COMM,       UK_DOT,      UK_SLSH,     KC_RSFT,
                                      KC_MPLY,    TD(TD_LP) ,           NUM,             KC_SPC, KC_LCTL,  MT(MOD_LCTL,KC_ENT),  KC_BSPC,   QK_LEAD,     TD(TD_RP), TD(TD_GAME)
@@ -136,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUM] = LAYOUT(
        KC_ESC,  UK_EXLM,  UK_DQUO,  UK_PND,          UK_DLR ,    UK_PERC,                                      UK_CIRC,         UK_AMPR, UK_ASTR, TD(TD_MINS), TD(TD_EQL),  XXXXXXX,
        UK_GRV,     UK_1,     UK_2,    UK_3,     LSFT_T(UK_4),       UK_5,                                         UK_6,    LSFT_T(UK_7),    UK_8,        UK_9,       UK_0,  UK_HASH,
-       UK_BSLS, KC_LEFT,    KC_UP,    KC_DOWN,    KC_RGHT,    _______, XXXXXXX, _______, _______, XXXXXXX, _______,         C(KC_LEFT),    UK_COMM,       UK_DOT,    C(KC_RGHT),  _______,
+       UK_BSLS, KC_LEFT,    KC_UP,    KC_DOWN,    KC_RGHT,    _______, XXXXXXX, _______, _______, XXXXXXX, _______,         C(KC_LEFT),    UK_COMM,       UK_DOT,    C(KC_RGHT),  KC_F1,
                                    _______,          _______,     _______,  KC_SPC, _______,  KC_ENT, KC_BSPC, _______,         _______, _______
     ),
 

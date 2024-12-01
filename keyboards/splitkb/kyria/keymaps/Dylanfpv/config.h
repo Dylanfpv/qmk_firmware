@@ -25,7 +25,7 @@
 #define EE_HANDS
 #define DEBOUNCING_DELAY 10
 #define SPLIT_WATCHDOG_ENABLE
-
+#define SPLIT_WATCHDOG_TIMEOUT 3000
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
 #ifdef RGBLIGHT_ENABLE
@@ -39,8 +39,6 @@
 #    define RGBLED_NUM 20
 #endif
 #define SPLIT_LAYER_STATE_ENABLE
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
 // EC11K encoders have a different resolution than other EC11 encoders.
 // When using the default resolution of 4, if you notice your encoder skipping
 // every other tick, lower the resolution to 2.
@@ -54,14 +52,5 @@
 // https://docs.qmk.fm/#/config_options?id=setting-handedness
 //#define EE_HANDS
 // Space saving
-#undef LOCKING_SUPPORT_ENABLE
-#undef LOCKING_RESYNC_ENABLE
 
-#define NO_MUSIC_MODE
-#ifndef NO_DEBUG
-#define NO_DEBUG
-#endif // !NO_DEBUG
-#if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
-#define NO_PRINT
-#endif // !NO_PRINT
 
